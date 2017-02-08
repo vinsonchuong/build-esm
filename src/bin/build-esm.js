@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import * as path from 'path'
 import thenify from 'thenify'
 import * as babel from 'babel-core'

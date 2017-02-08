@@ -16,6 +16,9 @@
     "README.md",
     "src"
   ],
+  "bin": {
+    "build-esm": "src/bin/build-esm.js"
+  },
   "main": "src/index.js",
   "repository": {
     "type": "git",
