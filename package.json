@@ -1,0 +1,70 @@
+{
+  "name": "build-esm",
+  "version": "1.0.0",
+  "description": "Compile an ES Module for release on npm",
+  "keywords": [
+    "babel",
+    "esm",
+    "npm"
+  ],
+  "homepage": "https://github.com/vinsonchuong/build-esm",
+  "bugs": "https://github.com/vinsonchuong/build-esm/issues",
+  "license": "MIT",
+  "author": "Vinson Chuong <vinsonchuong@gmail.com>",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "src"
+  ],
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vinsonchuong/build-esm"
+  },
+  "scripts": {
+    "test": "standard --fix && ava"
+  },
+  "dependencies": {
+    "babel-core": "^6.22.1",
+    "babel-runtime": "^6.22.0",
+    "mkdirp": "^0.5.1",
+    "mz": "^2.6.0",
+    "pkgfiles": "^2.3.2",
+    "rimraf": "^2.5.4",
+    "thenify": "^3.2.1"
+  },
+  "devDependencies": {
+    "ava": "^0.18.1",
+    "babel-cli": "^6.22.2",
+    "babel-plugin-module-resolver": "^2.5.0",
+    "babel-register": "^6.22.0",
+    "standard-esnext": "^1.0.5",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-preset-latest": "^6.22.0"
+  },
+  "babel": {
+    "presets": [
+      "latest"
+    ],
+    "plugins": [
+      "transform-runtime",
+      [
+        "module-resolver",
+        {
+          "alias": {
+            "build-esm": "./"
+          }
+        }
+      ]
+    ]
+  },
+  "ava": {
+    "babel": "inherit",
+    "require": "babel-register"
+  },
+  "standard": {
+    "ignore": [
+      "test/fixtures/"
+    ]
+  }
+}
