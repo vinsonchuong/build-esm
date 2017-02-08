@@ -1,10 +1,11 @@
 import * as path from 'path'
-import * as fs from 'mz/fs'
 import thenify from 'thenify'
-import mkdirp from 'mkdirp'
-import rimraf from 'rimraf'
 import * as babel from 'babel-core'
 import pkgfiles from 'pkgfiles'
+import createDir from '../createDir'
+import removeDir from '../removeDir'
+import readFile from '../readFile'
+import writeFile from '../writeFile'
 
 async function packageFiles () {
   const [entries] = await thenify(pkgfiles)(process.cwd())
@@ -13,38 +14,25 @@ async function packageFiles () {
     .map(entry => entry.name)
 }
 
-async function compileFile(filePath) {
+async function compileFile (filePath) {
   const {code} = await thenify(babel.transformFile)(filePath, {
     sourceMaps: 'inline'
   })
   return code
 }
 
-async function writeFile(destinationPath, contents) {
-  await thenify(mkdirp)(path.dirname(destinationPath))
-  await fs.writeFile(destinationPath, contents)
-}
-
-async function copyFile(sourcePath, destinationPath) {
-  const contents = await fs.readFile(sourcePath, 'utf8')
-  await writeFile(destinationPath, contents)
-}
-
-async function makeEmptyDirectory (directoryPath) {
-  await thenify(rimraf)(directoryPath)
-  await thenify(mkdirp)(directoryPath)
-}
-
-async function run() {
-  await makeEmptyDirectory('dist')
+async function run () {
+  await removeDir('dist')
+  await createDir('dist')
   for (const filePath of await packageFiles()) {
     if (filePath.endsWith('.js')) {
       console.log(`Compiling ${filePath} => dist/${filePath}`)
       const contents = await compileFile(filePath)
-      await writeFile(path.join('dist', filePath), contents) 
+      await writeFile(path.join('dist', filePath), contents)
     } else {
       console.log(`Copying ${filePath} => dist/${filePath}`)
-      await copyFile(filePath, path.join('dist', filePath))
+      const contents = await readFile(filePath)
+      await writeFile(path.join('dist', filePath), contents)
     }
   }
 }
