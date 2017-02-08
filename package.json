@@ -25,7 +25,8 @@
     "url": "https://github.com/vinsonchuong/build-esm"
   },
   "scripts": {
-    "test": "standard --fix && ava"
+    "test": "standard --fix && ava",
+    "build": "babel-node src/bin/build-esm.js"
   },
   "dependencies": {
     "babel-core": "^6.22.1",
