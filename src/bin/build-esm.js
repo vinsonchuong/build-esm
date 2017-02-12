@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* @flow */
 import * as path from 'path'
 import thenify from 'thenify'
 import * as babel from 'babel-core'
@@ -8,25 +9,25 @@ import removeDir from '../removeDir'
 import readFile from '../readFile'
 import writeFile from '../writeFile'
 
-function currentScript () {
+function currentScript (): ?string {
   return process.env.npm_lifecycle_event
 }
 
-async function packageFiles () {
+async function packageFiles (): Promise<string[]> {
   const [entries] = await thenify(pkgfiles)(process.cwd())
   return entries
     .filter(entry => !entry.isDirectory)
     .map(entry => entry.name)
 }
 
-async function compileFile (filePath) {
+async function compileFile (filePath: string): Promise<string> {
   const {code} = await thenify(babel.transformFile)(filePath, {
     sourceMaps: 'inline'
   })
   return code
 }
 
-async function run () {
+async function run (): Promise<void> {
   if (currentScript() === 'prepare') {
     for (const filePath of await packageFiles()) {
       if (filePath.endsWith('.js')) {

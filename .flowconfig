@@ -1,0 +1,9 @@
+[ignore]
+
+[include]
+
+[libs]
+
+[options]
+module.name_mapper='^build-esm$' -> '<PROJECT_ROOT>'
+module.name_mapper='^build-esm\/\(.*\)$' -> '<PROJECT_ROOT>/\1'

@@ -1,3 +1,4 @@
+/* @flow */
 import test from 'ava'
 import execBin from 'build-esm/test/helpers/execBin'
 import execInNode from 'build-esm/test/helpers/execInNode'

@@ -25,7 +25,7 @@
     "url": "https://github.com/vinsonchuong/build-esm"
   },
   "scripts": {
-    "test": "standard --fix && ava",
+    "test": "flow && standard --fix && ava",
     "build": "babel-node src/bin/build-esm.js",
     "prepare": "babel-node src/bin/build-esm.js"
   },
@@ -41,11 +41,14 @@
   "devDependencies": {
     "ava": "^0.18.1",
     "babel-cli": "^6.22.2",
-    "babel-plugin-module-resolver": "^2.5.0",
-    "babel-register": "^6.22.0",
-    "standard-esnext": "^1.0.5",
+    "babel-plugin-package-name-import": "^1.0.0",
+    "babel-plugin-syntax-flow": "^6.18.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-plugin-transform-runtime": "^6.22.0",
-    "babel-preset-latest": "^6.22.0"
+    "babel-preset-latest": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "flow-bin": "^0.39.0",
+    "standard-esnext": "^1.0.5"
   },
   "babel": {
     "presets": [
@@ -53,14 +56,9 @@
     ],
     "plugins": [
       "transform-runtime",
-      [
-        "module-resolver",
-        {
-          "alias": {
-            "build-esm": "./"
-          }
-        }
-      ]
+      "package-name-import",
+      "syntax-flow",
+      "transform-flow-strip-types"
     ]
   },
   "ava": {
