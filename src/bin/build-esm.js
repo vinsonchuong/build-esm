@@ -30,9 +30,11 @@ async function compileFile (filePath) {
 async function run () {
   if (currentScript() === 'prepare') {
     for (const filePath of await packageFiles()) {
-      console.log(`Compiling ${filePath}`)
-      const contents = await compileFile(filePath)
-      await writeFile(filePath, contents)
+      if (filePath.endsWith('.js')) {
+        console.log(`Compiling ${filePath}`)
+        const contents = await compileFile(filePath)
+        await writeFile(filePath, contents)
+      }
     }
   } else {
     await removeDir('dist')
