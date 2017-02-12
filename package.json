@@ -26,7 +26,8 @@
   },
   "scripts": {
     "test": "standard --fix && ava",
-    "build": "babel-node src/bin/build-esm.js"
+    "build": "babel-node src/bin/build-esm.js",
+    "prepare": "babel-node src/bin/build-esm.js"
   },
   "dependencies": {
     "babel-core": "^6.22.1",

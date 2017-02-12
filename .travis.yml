@@ -1,6 +1,13 @@
----
 dist: trusty
 sudo: false
 language: node_js
 node_js: node
 cache: yarn
+
+deploy:
+  provider: npm
+  email: vinsonchuong@gmail.com
+  api_key:
+    secure: W9/CPaMNr6xmUHT7CRuAjomx85qojVxMp86saxI5z8JXh2x11LP94N7Hzxq/iiQaRG9n3fMcibq2i1ChG3mBe8b5xbCbmBCfC4Szi3zUZcjA4Rbh1mGiSuHtZe151689xDwjnoRY0558NHZ3VV1lNfLOnBDccd/zc1tVBj5jdP7d5WtxT5DaWUe8b+8t7acEdOv00ESGawwjHMcP+X9WOGQ8OOwLUqK+sry2nBKDFTWPw/VyfnQK9j5pvUnRAqXNuvdJilp6AacAP21/EJiGm6XzrSiBhC14nwPLTg2rlv1f53O427sOnWIKxMObrZqTYNcvp4yBAqf9LxDTHUzTRWGltwJ8WqUYaSsqAOfO71bMvFWtxcyWQJhIDYwYcIEzy8hDwtt8//+7SQQxDVZt5d5y+VuCoYManQvLFspvONyEpHFGcqtb/vOWR9NicqCjjm3FNG53gk2UrBzbNtSFQoi6E8+7IiJJgTvdxmMG3r8zbkj05r1UzX0NoPVAcv4nBStOJDAYxRHO2yUutrN2bVEV7xcAq0QOPOVmXkiQE4BYMun2hpbISXOJr1MqaCaDjfGWSIOTVtva7ISGm9fRQ4CZPdGb+43wMyV88g03R2QrxofvhufPCgEHmM+vpJbg81SkfJMDcMAeHX5okVUQJsQYvx98I4/PknhgJizaJB4=
+  on:
+    tags: true

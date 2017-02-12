@@ -10,7 +10,7 @@ Install it locally to your project by running:
 yarn add --dev build-esm
 ```
 
-## Usage
+## Manual Deployment
 Add `build-esm` as a `build` script to `package.json`:
 
 ```json
@@ -39,3 +39,22 @@ The package can be published by running:
 ```bash
 npm publish dist
 ```
+
+### Continuous Deployment
+When publishing from a continuous integration service, `build-esm` can compile
+files in-place, allowing `npm publish` without arguments to work as desired.
+
+To enable in-place compilation, add `build-esm` as a `prepare` script to
+`package.json`:
+
+```json
+{
+  "name": "project",
+  "scripts": {
+    "prepare": "build-esm"
+  }
+}
+```
+
+Here are some example deployment workflows:
+* [Travis CI](https://docs.travis-ci.com/user/deployment/npm/)

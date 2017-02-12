@@ -9,6 +9,10 @@ import removeDir from '../removeDir'
 import readFile from '../readFile'
 import writeFile from '../writeFile'
 
+function currentScript () {
+  return process.env.npm_lifecycle_event
+}
+
 async function packageFiles () {
   const [entries] = await thenify(pkgfiles)(process.cwd())
   return entries
@@ -24,17 +28,25 @@ async function compileFile (filePath) {
 }
 
 async function run () {
-  await removeDir('dist')
-  await createDir('dist')
-  for (const filePath of await packageFiles()) {
-    if (filePath.endsWith('.js')) {
-      console.log(`Compiling ${filePath} => dist/${filePath}`)
+  if (currentScript === 'prepare') {
+    for (const filePath of await packageFiles()) {
+      console.log(`Compiling ${filePath}`)
       const contents = await compileFile(filePath)
-      await writeFile(path.join('dist', filePath), contents)
-    } else {
-      console.log(`Copying ${filePath} => dist/${filePath}`)
-      const contents = await readFile(filePath)
-      await writeFile(path.join('dist', filePath), contents)
+      await writeFile(filePath, contents)
+    }
+  } else {
+    await removeDir('dist')
+    await createDir('dist')
+    for (const filePath of await packageFiles()) {
+      if (filePath.endsWith('.js')) {
+        console.log(`Compiling ${filePath} => dist/${filePath}`)
+        const contents = await compileFile(filePath)
+        await writeFile(path.join('dist', filePath), contents)
+      } else {
+        console.log(`Copying ${filePath} => dist/${filePath}`)
+        const contents = await readFile(filePath)
+        await writeFile(path.join('dist', filePath), contents)
+      }
     }
   }
 }
