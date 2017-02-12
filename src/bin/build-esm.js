@@ -28,7 +28,7 @@ async function compileFile (filePath) {
 }
 
 async function run () {
-  if (currentScript === 'prepare') {
+  if (currentScript() === 'prepare') {
     for (const filePath of await packageFiles()) {
       console.log(`Compiling ${filePath}`)
       const contents = await compileFile(filePath)
