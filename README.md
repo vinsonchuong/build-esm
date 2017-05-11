@@ -44,14 +44,14 @@ npm publish dist
 When publishing from a continuous integration service, `build-esm` can compile
 files in-place, allowing `npm publish` without arguments to work as desired.
 
-To enable in-place compilation, add `build-esm` as a `prepare` script to
+To enable in-place compilation, add `build-esm` as a `prepublishOnly` script to
 `package.json`:
 
 ```json
 {
   "name": "project",
   "scripts": {
-    "prepare": "build-esm"
+    "prepublishOnly": "build-esm"
   }
 }
 ```
