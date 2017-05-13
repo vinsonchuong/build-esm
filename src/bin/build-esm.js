@@ -16,7 +16,7 @@ function currentScript (): ?string {
 async function packageFiles (): Promise<string[]> {
   const [entries] = await thenify(pkgfiles)(process.cwd())
   return entries
-    .filter(entry => !entry.isDirectory)
+    .filter(entry => !entry.isDirectory && entry.exists)
     .map(entry => entry.name)
 }
 
