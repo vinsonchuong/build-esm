@@ -28,7 +28,7 @@ async function compileFile (filePath: string): Promise<string> {
 }
 
 async function run (): Promise<void> {
-  if (currentScript() === 'prepublishOnly') {
+  if (currentScript() === 'prepack') {
     for (const filePath of await packageFiles()) {
       if (filePath.endsWith('.js')) {
         console.log(`Compiling ${filePath}`)

@@ -44,17 +44,19 @@ npm publish dist
 When publishing from a continuous integration service, `build-esm` can compile
 files in-place, allowing `npm publish` without arguments to work as desired.
 
-To enable in-place compilation, add `build-esm` as a `prepublishOnly` script to
+To enable in-place compilation, add `build-esm` as a `prepack` script to
 `package.json`:
 
 ```json
 {
   "name": "project",
   "scripts": {
-    "prepublishOnly": "build-esm"
+    "prepack": "build-esm"
   }
 }
 ```
+
+Note that `prepack` is only supported in `npm` version 5 and greater.
 
 Here are some example deployment workflows:
 * [Travis CI](https://docs.travis-ci.com/user/deployment/npm/)
