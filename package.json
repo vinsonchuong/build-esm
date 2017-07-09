@@ -25,38 +25,28 @@
     "url": "https://github.com/vinsonchuong/build-esm"
   },
   "scripts": {
-    "test": "flow && standard --fix && ava",
-    "build": "babel-node src/bin/build-esm.js",
-    "prepack": "babel-node src/bin/build-esm.js"
+    "test": "flow && standard -v --fix && ava",
+    "build": "node -r babel-register src/bin/build-esm.js",
+    "prepack": "node -r babel-register src/bin/build-esm.js"
   },
   "dependencies": {
-    "babel-core": "^6.24.1",
-    "babel-runtime": "^6.23.0",
+    "babel-core": "^6.25.0",
     "mkdirp": "^0.5.1",
     "mz": "^2.6.0",
     "pkgfiles": "^2.3.2",
     "rimraf": "^2.6.1",
-    "thenify": "^3.2.1"
+    "thenify": "^3.3.0"
   },
   "devDependencies": {
-    "ava": "^0.19.1",
-    "babel-cli": "^6.24.1",
-    "babel-plugin-package-name-import": "^1.0.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-flow": "^6.23.0",
-    "babel-preset-latest": "^6.24.1",
+    "ava": "^0.20.0",
+    "babel-preset-diff": "^0.0.3",
     "babel-register": "^6.24.1",
-    "flow-bin": "^0.46.0",
-    "standard-esnext": "^1.0.14"
+    "flow-bin": "^0.49.1",
+    "standard-esnext": "^3.0.0"
   },
   "babel": {
     "presets": [
-      "latest",
-      "flow"
-    ],
-    "plugins": [
-      "transform-runtime",
-      "package-name-import"
+      "diff"
     ]
   },
   "ava": {

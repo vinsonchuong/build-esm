@@ -5,7 +5,7 @@ import execInNode from 'build-esm/test/helpers/execInNode'
 import readFile from 'build-esm/src/readFile'
 import removeDir from 'build-esm/src/removeDir'
 
-test(async (t) => {
+test(async t => {
   await execBin('build-esm', 'test/fixtures/project')
 
   t.is(
@@ -16,9 +16,11 @@ test(async (t) => {
     await readFile('test/fixtures/project/dist/package.json'),
     await readFile('test/fixtures/project/package.json')
   )
+  t.is(await execInNode('test/fixtures/project/dist/index.js'), 'Text')
+
   t.is(
-    await execInNode('test/fixtures/project/dist/index.js'),
-    'Text'
+    await readFile('test/fixtures/project/dist/index.js.flow'),
+    await readFile('test/fixtures/project/index.js')
   )
 })
 

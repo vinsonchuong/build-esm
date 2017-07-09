@@ -1,15 +1,12 @@
 /* @flow */
 import * as path from 'path'
-import {exec} from 'mz/child_process'
+import { exec } from 'mz/child_process'
 
-export default async function (
+export default function(
   binName: string,
   workingDirectory: string
 ): Promise<string> {
-  return await exec(
-    `babel-node ${path.resolve('src/bin', binName)}`,
-    {
-      cwd: path.resolve(workingDirectory)
-    }
-  )
+  return exec(`node -r babel-register ${path.resolve('src/bin', binName)}`, {
+    cwd: path.resolve(workingDirectory)
+  })
 }
