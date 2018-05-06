@@ -3,7 +3,7 @@
 import * as path from 'path'
 import thenify from 'thenify'
 import * as babel from 'babel-core'
-import pkgfiles from 'pkgfiles'
+import packageList from 'npm-packlist'
 import createDir from '../createDir'
 import removeDir from '../removeDir'
 import readFile from '../readFile'
@@ -11,13 +11,6 @@ import writeFile from '../writeFile'
 
 function currentScript(): ?string {
   return process.env.npm_lifecycle_event
-}
-
-async function packageFiles(): Promise<string[]> {
-  const [entries] = await thenify(pkgfiles)(process.cwd())
-  return entries
-    .filter(entry => !entry.isDirectory && entry.exists)
-    .map(entry => entry.name)
 }
 
 async function compileFile(filePath: string): Promise<string> {
@@ -32,7 +25,7 @@ async function run(): Promise<void> {
   const usesFlow = 'flow-bin' in packageJson.devDependencies
 
   if (currentScript() === 'prepack') {
-    for (const filePath of await packageFiles()) {
+    for (const filePath of await packageList()) {
       if (filePath.endsWith('.js')) {
         console.log(`Compiling ${filePath}`)
 
@@ -48,7 +41,7 @@ async function run(): Promise<void> {
   } else {
     await removeDir('dist')
     await createDir('dist')
-    for (const filePath of await packageFiles()) {
+    for (const filePath of await packageList()) {
       if (filePath.endsWith('.js')) {
         console.log(`Compiling ${filePath} => dist/${filePath}`)
 
