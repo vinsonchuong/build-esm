@@ -39,23 +39,25 @@ async function run(): Promise<void> {
       }
     }
   } else {
-    await removeDir('dist')
-    await createDir('dist')
+    const distPath = process.argv[2] || 'dist'
+
+    await removeDir(distPath)
+    await createDir(distPath)
     for (const filePath of await packageList()) {
       if (filePath.endsWith('.js')) {
-        console.log(`Compiling ${filePath} => dist/${filePath}`)
+        console.log(`Compiling ${filePath} => ${distPath}/${filePath}`)
 
         if (usesFlow) {
           const contents = await readFile(filePath)
-          await writeFile(path.join('dist', `${filePath}.flow`), contents)
+          await writeFile(path.join(distPath, `${filePath}.flow`), contents)
         }
 
         const compiledContents = await compileFile(filePath)
-        await writeFile(path.join('dist', filePath), compiledContents)
+        await writeFile(path.join(distPath, filePath), compiledContents)
       } else {
-        console.log(`Copying ${filePath} => dist/${filePath}`)
+        console.log(`Copying ${filePath} => ${distPath}/${filePath}`)
         const contents = await readFile(filePath)
-        await writeFile(path.join('dist', filePath), contents)
+        await writeFile(path.join(distPath, filePath), contents)
       }
     }
   }
