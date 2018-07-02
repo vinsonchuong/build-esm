@@ -8,6 +8,7 @@ import createDir from '../createDir'
 import removeDir from '../removeDir'
 import readFile from '../readFile'
 import writeFile from '../writeFile'
+import copyFile from '../copyFile'
 
 function currentScript(): ?string {
   return process.env.npm_lifecycle_event
@@ -56,8 +57,7 @@ async function run(): Promise<void> {
         await writeFile(path.join(distPath, filePath), compiledContents)
       } else {
         console.log(`Copying ${filePath} => ${distPath}/${filePath}`)
-        const contents = await readFile(filePath)
-        await writeFile(path.join(distPath, filePath), contents)
+        await copyFile(path.resolve(filePath), path.join(distPath, filePath))
       }
     }
   }
