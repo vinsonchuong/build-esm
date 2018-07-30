@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /* @flow */
 import * as path from 'path'
-import thenify from 'thenify'
-import * as babel from 'babel-core'
+import { promisify } from 'util'
+import * as babel from '@babel/core'
 import packageList from 'npm-packlist'
 import createDir from '../createDir'
 import removeDir from '../removeDir'
@@ -15,7 +15,7 @@ function currentScript(): ?string {
 }
 
 async function compileFile(filePath: string): Promise<string> {
-  const { code } = await thenify(babel.transformFile)(filePath, {
+  const { code } = await promisify(babel.transformFile)(filePath, {
     sourceMaps: 'inline'
   })
   return code

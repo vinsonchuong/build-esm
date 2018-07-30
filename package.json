@@ -26,23 +26,22 @@
   },
   "scripts": {
     "test": "flow && standard -v --fix && ava",
-    "build": "node -r babel-register src/bin/build-esm.js",
-    "prepack": "node -r babel-register src/bin/build-esm.js"
+    "build": "node -r @babel/register src/bin/build-esm.js",
+    "prepack": "node -r @babel/register src/bin/build-esm.js"
   },
   "dependencies": {
-    "babel-core": "^6.26.3",
+    "@babel/core": "^7.0.0-beta.55",
     "mkdirp": "^0.5.1",
     "mz": "^2.7.0",
-    "npm-packlist": "^1.1.10",
-    "rimraf": "^2.6.2",
-    "thenify": "^3.3.0"
+    "npm-packlist": "^1.1.11",
+    "rimraf": "^2.6.2"
   },
   "devDependencies": {
-    "ava": "^0.25.0",
-    "babel-preset-diff": "^2.2.0",
-    "babel-register": "^6.26.0",
-    "flow-bin": "0.69.0",
-    "standard-esnext": "^4.0.3"
+    "@babel/register": "^7.0.0-beta.55",
+    "ava": "^1.0.0-beta.6",
+    "babel-preset-diff": "^6.0.0",
+    "flow-bin": "^0.77.0",
+    "standard-esnext": "^5.0.0"
   },
   "babel": {
     "presets": [
@@ -50,8 +49,7 @@
     ]
   },
   "ava": {
-    "babel": "inherit",
-    "require": "babel-register"
+    "require": "@babel/register"
   },
   "standard": {
     "ignore": [

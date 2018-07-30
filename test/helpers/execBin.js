@@ -2,11 +2,12 @@
 import * as path from 'path'
 import { exec } from 'mz/child_process'
 
-export default function(
+export default async function(
   binName: string,
   workingDirectory: string
 ): Promise<string> {
-  return exec(`node -r babel-register ${path.resolve('src/bin', binName)}`, {
+  await exec('yarn build')
+  return exec(`node ${path.resolve('dist/src/bin', binName)}`, {
     cwd: path.resolve(workingDirectory)
   })
 }

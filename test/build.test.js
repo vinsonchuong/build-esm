@@ -5,7 +5,7 @@ import execInNode from 'build-esm/test/helpers/execInNode'
 import readFile from 'build-esm/src/readFile'
 import removeDir from 'build-esm/src/removeDir'
 
-test(async t => {
+test('compiling a module', async t => {
   await execBin('build-esm', 'test/fixtures/project')
 
   t.is(
