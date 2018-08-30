@@ -30,18 +30,18 @@
     "prepack": "node -r @babel/register src/bin/build-esm.js"
   },
   "dependencies": {
-    "@babel/core": "^7.0.0-beta.55",
+    "@babel/core": "^7.0.0",
     "mkdirp": "^0.5.1",
     "mz": "^2.7.0",
     "npm-packlist": "^1.1.11",
     "rimraf": "^2.6.2"
   },
   "devDependencies": {
-    "@babel/register": "^7.0.0-beta.55",
+    "@babel/register": "^7.0.0",
     "ava": "^1.0.0-beta.6",
-    "babel-preset-diff": "^6.0.0",
-    "flow-bin": "^0.77.0",
-    "standard-esnext": "^5.0.0"
+    "babel-preset-diff": "^6.0.3",
+    "flow-bin": "^0.79.1",
+    "standard-esnext": "^5.1.7"
   },
   "babel": {
     "presets": [
