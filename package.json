@@ -25,7 +25,7 @@
     "url": "https://github.com/vinsonchuong/build-esm"
   },
   "scripts": {
-    "test": "flow && standard -v --fix && ava",
+    "test": "flow && standard -v --fix && ava -v",
     "build": "node -r @babel/register src/bin/build-esm.js",
     "prepack": "node -r @babel/register src/bin/build-esm.js"
   },
@@ -38,9 +38,9 @@
   },
   "devDependencies": {
     "@babel/register": "^7.0.0",
-    "ava": "^1.0.0-beta.6",
+    "ava": "^1.0.0-beta.8",
     "babel-preset-diff": "^6.0.3",
-    "flow-bin": "^0.79.1",
+    "flow-bin": "^0.80.0",
     "standard-esnext": "^5.1.7"
   },
   "babel": {
