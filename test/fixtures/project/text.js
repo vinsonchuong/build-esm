@@ -1,2 +1,4 @@
 /* @flow */
-export default 'Text'
+export default function(): string {
+  return 'Text'
+}

@@ -26,8 +26,8 @@
   },
   "scripts": {
     "test": "flow && standard -v --fix && ava -v",
-    "build": "node -r @babel/register src/bin/build-esm.js",
-    "prepack": "node -r @babel/register src/bin/build-esm.js"
+    "build": "node -r overdub/register src/bin/build-esm.js",
+    "prepack": "node -r overdub/register src/bin/build-esm.js"
   },
   "dependencies": {
     "@babel/core": "^7.0.0",
@@ -37,18 +37,17 @@
     "rimraf": "^2.6.2"
   },
   "devDependencies": {
-    "@babel/register": "^7.0.0",
     "ava": "^1.0.0-beta.8",
-    "babel-preset-diff": "^6.0.3",
     "flow-bin": "^0.80.0",
+    "overdub": "^1.1.0",
     "standard-esnext": "^5.1.7"
   },
-  "babel": {
-    "presets": [
-      "diff"
-    ]
-  },
   "ava": {
-    "require": "@babel/register"
+    "require": "overdub/register",
+    "babel": {
+      "testOptions": {
+        "extends": "overdub/babel"
+      }
+    }
   }
 }

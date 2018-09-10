@@ -1,3 +1,3 @@
 /* @flow */
 import text from './text'
-console.log(text)
+console.log(text())

@@ -2,10 +2,5 @@
   "name": "project",
   "devDependencies": {
     "flow-bin": ""
-  },
-  "babel": {
-    "presets": [
-      "diff"
-    ]
   }
 }
