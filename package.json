@@ -50,10 +50,5 @@
   },
   "ava": {
     "require": "@babel/register"
-  },
-  "standard": {
-    "ignore": [
-      "test/fixtures/"
-    ]
   }
 }
