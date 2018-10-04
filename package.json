@@ -34,7 +34,7 @@
     "mkdirp": "^0.5.1",
     "mz": "^2.7.0",
     "npm-packlist": "^1.1.11",
-    "overdub": "^2.0.1",
+    "overdub": "^2.1.0",
     "rimraf": "^2.6.2"
   },
   "devDependencies": {

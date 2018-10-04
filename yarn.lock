@@ -44,7 +44,7 @@
   dependencies:
     "@babel/highlight" "^7.0.0"
 
-"@babel/core@>=7.1.0", "@babel/core@^7.1.0", "@babel/core@^7.1.2":
+"@babel/core@>=7.1.0", "@babel/core@^7.1.2":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.1.2.tgz#f8d2a9ceb6832887329a7b60f9d035791400ba4e"
   integrity sha512-IFeSSnjXdhDaoysIlev//UzHZbdEmm7D0EIH2qtse9xK7mXEZQpYjs2P00XlP1qYsYvid79p+Zgg6tz1mp6iVw==
@@ -361,6 +361,13 @@
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-async-generators/-/plugin-syntax-async-generators-7.0.0.tgz#bf0891dcdbf59558359d0c626fdc9490e20bc13c"
   integrity sha512-im7ged00ddGKAjcZgewXmp1vxSZQQywuQXe2B1A7kajjZmDeY/ekMPmWr9zJgveSaQH0k7BcGrojQhcK06l0zA==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+
+"@babel/plugin-syntax-dynamic-import@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-dynamic-import/-/plugin-syntax-dynamic-import-7.0.0.tgz#6dfb7d8b6c3be14ce952962f658f3b7eb54c33ee"
+  integrity sha512-Gt9xNyRrCHCiyX/ZxDGOcBnlJl0I3IWicpZRC4CdC0P5a/I07Ya2OAMEBU+J7GmRFVmIetqEYRko6QYRuKOESw==
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
@@ -1104,12 +1111,13 @@ babel-plugin-package-name-import@^1.0.3:
     babel-runtime "^6.25.0"
     find-nearest-package-json "^2.0.1"
 
-babel-preset-diff@^6.0.3:
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/babel-preset-diff/-/babel-preset-diff-6.0.3.tgz#9f1ad771e2e2a5ab6fa3de8c48d7816a98c97fa8"
-  integrity sha512-n21pX8jDG4FCgfKb5+nsXUR0HpkwJSyvXYg5uYvaWu/tA6OHm1tQsYOImkz42AALfMxCMEG0sQuNecPrvW6R/g==
+babel-preset-diff@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/babel-preset-diff/-/babel-preset-diff-6.1.0.tgz#0502fb3c5df3315db648ea810cc1c1342fe0bab8"
+  integrity sha512-iHKU0MKClwQvVloxlDOn75jC35VUC7zkgdD8crYKXB4fV27LeI4PUSzNFtINmFzwlJ/ziYrd688a2PYozw5PHg==
   dependencies:
-    "@babel/core" "^7.0.0"
+    "@babel/core" "^7.1.2"
+    "@babel/plugin-syntax-dynamic-import" "^7.0.0"
     "@babel/preset-env" "^7.0.0"
     "@babel/preset-flow" "^7.0.0"
     "@babel/preset-react" "^7.0.0"
@@ -3470,14 +3478,14 @@ osenv@^0.1.4:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
 
-overdub@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/overdub/-/overdub-2.0.1.tgz#c74489282db25994f04ab9404f3a9ca323658bf9"
-  integrity sha512-JS7W7Wu4OxIFbFmbG0oCmrtXtaHNRpPcPVGan2NqQWR8C09fLgez3nOdutMyuwB/ouCW9A7FgezuHssIpcl1BQ==
+overdub@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/overdub/-/overdub-2.1.0.tgz#96f9cdb468f505344d35b32782b5dff38b26020d"
+  integrity sha512-4Q/BOcqK6wdjBTWZFPxE2UIuXy16Bb9JMjTa2Tfx7bia2V5EAcNVv9KIK9hei+XuMOlNKVl+Piz3G6YJKFzESA==
   dependencies:
-    "@babel/core" "^7.1.0"
+    "@babel/core" "^7.1.2"
     "@babel/register" "^7.0.0"
-    babel-preset-diff "^6.0.3"
+    babel-preset-diff "^6.1.0"
 
 p-finally@^1.0.0:
   version "1.0.0"
