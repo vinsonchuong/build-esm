@@ -1,6 +1,6 @@
 {
   "name": "build-esm",
-  "version": "4.1.2",
+  "version": "4.2.0",
   "description": "Compile an ES Module for release on npm",
   "keywords": [
     "babel",
