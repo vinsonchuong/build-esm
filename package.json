@@ -30,17 +30,17 @@
     "prepack": "node -r overdub/register src/bin/build-esm.js"
   },
   "dependencies": {
-    "@babel/core": "^7.1.2",
+    "@babel/core": "^7.2.2",
     "mkdirp": "^0.5.1",
     "mz": "^2.7.0",
-    "npm-packlist": "^1.1.11",
-    "overdub": "^2.1.0",
-    "rimraf": "^2.6.2"
+    "npm-packlist": "^1.2.0",
+    "overdub": "^2.3.0",
+    "rimraf": "^2.6.3"
   },
   "devDependencies": {
-    "ava": "^1.0.0-beta.8",
-    "flow-bin": "^0.82.0",
-    "standard-esnext": "^5.1.8"
+    "ava": "^1.2.0",
+    "flow-bin": "^0.91.0",
+    "standard-esnext": "^5.3.0"
   },
   "ava": {
     "require": "overdub/register",
