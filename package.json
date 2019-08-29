@@ -27,6 +27,7 @@
   "scripts": {
     "test": "if [ -n \"$CI\" ]; then standard -v && flow check && ava -v; else standard -v --fix && flow && ava -v; fi",
     "build": "node -r overdub/register src/bin/build-esm.js",
+    "release": "semantic-release",
     "prepack": "node -r overdub/register src/bin/build-esm.js"
   },
   "dependencies": {
@@ -40,6 +41,7 @@
   "devDependencies": {
     "ava": "^2.3.0",
     "flow-bin": "^0.106.3",
+    "semantic-release": "^15.13.24",
     "standard-esnext": "^5.3.3"
   },
   "ava": {
