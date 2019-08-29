@@ -5,6 +5,10 @@ import execInNode from 'build-esm/test/helpers/execInNode'
 import readFile from 'build-esm/src/readFile'
 import removeDir from 'build-esm/src/removeDir'
 
+test.afterEach.always(async () => {
+  await removeDir('test/fixtures/project/dist')
+})
+
 test('compiling a module', async t => {
   await execBin('build-esm', 'test/fixtures/project')
 
@@ -22,8 +26,4 @@ test('compiling a module', async t => {
     await readFile('test/fixtures/project/dist/index.js.flow'),
     await readFile('test/fixtures/project/index.js')
   )
-})
-
-test.afterEach.always(async () => {
-  await removeDir('test/fixtures/project/dist')
 })
