@@ -1,6 +1,6 @@
 /* @flow */
 import * as path from 'path'
-import * as fs from 'mz/fs'
+import { promises as fs } from 'fs'
 import createDir from './createDir'
 
 export default async function(

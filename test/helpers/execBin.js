@@ -1,6 +1,9 @@
 /* @flow */
 import * as path from 'path'
-import { exec } from 'mz/child_process'
+import * as childProcess from 'child_process'
+import { promisify } from 'util'
+
+const exec = promisify(childProcess.exec)
 
 export default async function(
   binName: string,

@@ -1,6 +1,6 @@
 /* @flow */
 import * as path from 'path'
-import * as fs from 'mz/fs'
+import { promises as fs } from 'fs'
 
 export default function(filePath: string): Promise<string> {
   return fs.readFile(path.resolve(filePath), 'utf8')
