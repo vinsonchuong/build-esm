@@ -25,7 +25,7 @@
     "url": "https://github.com/vinsonchuong/build-esm"
   },
   "scripts": {
-    "test": "flow && standard -v --fix && ava -v",
+    "test": "if [ -n \"$CI\" ]; then standard -v && flow check && ava -v; else standard -v --fix && flow && ava -v; fi",
     "build": "node -r overdub/register src/bin/build-esm.js",
     "prepack": "node -r overdub/register src/bin/build-esm.js"
   },
